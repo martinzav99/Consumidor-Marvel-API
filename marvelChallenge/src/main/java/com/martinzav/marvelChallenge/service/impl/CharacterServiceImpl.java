@@ -3,6 +3,7 @@ package com.martinzav.marvelChallenge.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.martinzav.marvelChallenge.dto.MyPageable;
 import com.martinzav.marvelChallenge.persistence.integration.marvel.dto.CharacterDto;
@@ -10,6 +11,7 @@ import com.martinzav.marvelChallenge.persistence.integration.marvel.dto.Characte
 import com.martinzav.marvelChallenge.persistence.integration.marvel.repository.CharacterRepository;
 import com.martinzav.marvelChallenge.service.CharacterService;
 
+@Service
 public class CharacterServiceImpl implements CharacterService{
 
     @Autowired
