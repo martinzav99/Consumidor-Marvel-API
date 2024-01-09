@@ -1,0 +1,14 @@
+services:
+  db-marvel:
+    container_name: db-marvel
+    image: postgres:15.2
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bbdd_marvel
+      POSTGRES_USER: martin 
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    command: -p 5432
