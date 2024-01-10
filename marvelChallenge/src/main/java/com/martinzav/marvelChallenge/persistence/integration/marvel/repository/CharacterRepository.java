@@ -16,6 +16,7 @@ import com.martinzav.marvelChallenge.dto.MyPageable;
 import com.martinzav.marvelChallenge.persistence.integration.marvel.MarvelAPIConfig;
 import com.martinzav.marvelChallenge.persistence.integration.marvel.dto.CharacterDto;
 import com.martinzav.marvelChallenge.persistence.integration.marvel.dto.CharacterDto.CharacterInfoDto;
+import com.martinzav.marvelChallenge.service.HttpClientService;
 
 import jakarta.annotation.PostConstruct;
 
@@ -24,6 +25,9 @@ public class CharacterRepository {
 
     @Autowired
     private MarvelAPIConfig marvelAPIConfig;
+
+    @Autowired
+    private HttpClientService httpClientService;
 
     @Value("${integration.marvel.base-path}")
     private String basePath;
