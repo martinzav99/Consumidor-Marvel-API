@@ -2,7 +2,6 @@ package com.martinzav.marvelChallenge.persistence.integration.marvel.repository;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -15,7 +14,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.martinzav.marvelChallenge.dto.MyPageable;
 import com.martinzav.marvelChallenge.persistence.integration.marvel.MarvelAPIConfig;
 import com.martinzav.marvelChallenge.persistence.integration.marvel.dto.CharacterDto;
-import com.martinzav.marvelChallenge.persistence.integration.marvel.dto.CharacterDto.CharacterInfoDto;
+import com.martinzav.marvelChallenge.persistence.integration.marvel.mapper.CharacterMapper;
 import com.martinzav.marvelChallenge.service.HttpClientService;
 
 import jakarta.annotation.PostConstruct;
@@ -48,7 +47,7 @@ public class CharacterRepository {
         Map<String,String> marvelQueryParams = marvelAPIConfig.getAuthenticationQueryParams();
         String finalUrl = characterPath.concat("/").concat(Long.toString(characterId));
         JsonNode response = httpClientService.doGet(finalUrl,marvelQueryParams,JsonNode.class);
-        return CharacterMapper.toDtoList(response).get(0); // it will return only one character or will break before this line
+        return CharacterMapper.toInfoDtoList(response).get(0); // it will return only one character or will break before this line
     }
 
     private Map<String,String> getQueryParamsForFindAll(String name, int[] comics, int[] series, MyPageable pageable){

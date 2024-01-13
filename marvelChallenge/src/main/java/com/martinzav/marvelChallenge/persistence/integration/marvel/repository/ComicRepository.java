@@ -3,16 +3,15 @@ package com.martinzav.marvelChallenge.persistence.integration.marvel.repository;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.martinzav.marvelChallenge.dto.MyPageable;
 import com.martinzav.marvelChallenge.persistence.integration.marvel.MarvelAPIConfig;
 import com.martinzav.marvelChallenge.persistence.integration.marvel.dto.ComicDto;
+import com.martinzav.marvelChallenge.persistence.integration.marvel.mapper.ComicMapper;
 import com.martinzav.marvelChallenge.service.HttpClientService;
 
 import jakarta.annotation.PostConstruct;
@@ -38,14 +37,14 @@ public class ComicRepository {
     public List<ComicDto> findAll(Long characterId, MyPageable pageable) {
         Map<String,String> marvelQueryParams = getQueryParamsForFindAll(characterId,pageable);
         JsonNode response = httpClientService.doGet(comicPath,marvelQueryParams,JsonNode.class);
-        return comicMapper.toDtoList(response);
+        return ComicMapper.toDtoList(response);
     }
 
     public ComicDto findById(Long comicId) {
         Map<String,String> marvelQueryParams = marvelAPIConfig.getAuthenticationQueryParams();
         String finalUrl = comicPath.concat("/").concat(Long.toString(comicId));
         JsonNode response = httpClientService.doGet(finalUrl,marvelQueryParams,JsonNode.class);
-        return comicMapper.toDtoList(response).get(0);
+        return ComicMapper.toDtoList(response).get(0);
     }
     
     private Map<String, String> getQueryParamsForFindAll(Long characterId, MyPageable pageable) {
