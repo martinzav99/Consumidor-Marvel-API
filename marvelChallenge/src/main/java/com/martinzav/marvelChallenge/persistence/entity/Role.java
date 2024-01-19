@@ -2,6 +2,8 @@ package com.martinzav.marvelChallenge.persistence.entity;
 
 import java.util.List;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -12,7 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Role {
+public class Role implements GrantedAuthority{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,5 +52,12 @@ public class Role {
 
     public void setPermissions(List<GrantedPermission> permissions) {
         this.permissions = permissions;
+    }
+
+    @Override
+    public String getAuthority() {
+        if (name == null) return null;
+
+        return "ROLE_"+ name.name();
     }
 }
