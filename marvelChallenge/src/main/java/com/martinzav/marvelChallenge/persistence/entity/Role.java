@@ -26,7 +26,7 @@ public class Role implements GrantedAuthority{
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "role")
     private List<GrantedPermission> permissions;
 
-    private static enum RoleEnum{
+    public static enum RoleEnum{
         CUSTOMER,AUDITOR
     }
 
