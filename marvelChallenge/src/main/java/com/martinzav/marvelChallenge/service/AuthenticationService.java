@@ -31,6 +31,9 @@ public class AuthenticationService {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    private JwtService jwtService;
+
     public LoginResponse aunthenticate(@Valid LoginRequest loginRequest) {
         UserDetails user = userDetailsService.loadUserByUsername(loginRequest.username());
 
