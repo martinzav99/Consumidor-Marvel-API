@@ -1,4 +1,4 @@
-package com.martinzav.marvelChallenge;
+ package com.martinzav.marvelChallenge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,5 +9,4 @@ public class MarvelChallengeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MarvelChallengeApplication.class, args);
 	}
-
 }

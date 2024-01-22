@@ -2,6 +2,7 @@ package com.martinzav.marvelChallenge.webController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +21,13 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationService authenticationService;
     
+    @PreAuthorize("permitAll")
     @PostMapping("/authenticate")
     public ResponseEntity<LoginResponse> authentication(@RequestBody @Valid LoginRequest loginRequest){
         return ResponseEntity.ok(authenticationService.aunthenticate(loginRequest));
     }
 
+    @PreAuthorize("permitAll")
     @PostMapping("/logout")
     public void logout(){
         authenticationService.logout();

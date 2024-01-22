@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
 
 import com.martinzav.marvelChallenge.dto.security.LoginRequest;
 import com.martinzav.marvelChallenge.dto.security.LoginResponse;
@@ -20,6 +21,7 @@ import com.martinzav.marvelChallenge.persistence.entity.User;
 
 import jakarta.validation.Valid;
 
+@Service
 public class AuthenticationService {
 
     @Autowired
