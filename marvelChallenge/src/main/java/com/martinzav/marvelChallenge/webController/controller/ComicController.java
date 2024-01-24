@@ -1,4 +1,4 @@
-package com.martinzav.marvelChallenge.webController;
+package com.martinzav.marvelChallenge.webController.controller;
 
 import java.util.List;
 

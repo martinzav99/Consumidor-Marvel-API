@@ -1,4 +1,4 @@
-package com.martinzav.marvelChallenge.webController;
+package com.martinzav.marvelChallenge.webController.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
